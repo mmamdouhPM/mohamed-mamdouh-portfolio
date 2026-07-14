@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-hairline;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink text-bone font-sans antialiased;
+    background-image: radial-gradient(ellipse 900px 600px at 15% -10%, rgba(201, 151, 63, 0.07), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(92, 98, 112, 0.08), transparent 60%);
+    background-attachment: fixed;
+  }
+  :focus-visible {
+    outline: 2px solid #c9973f;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background: rgba(201, 151, 63, 0.3);
+    color: #f3f1ea;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.14em] uppercase text-brass flex items-center gap-2 mb-3;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply w-4 h-px bg-brass inline-block;
+  }
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-brass focus:text-ink focus:px-4 focus:py-2 focus:rounded-sm focus:font-sans focus:font-semibold;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
